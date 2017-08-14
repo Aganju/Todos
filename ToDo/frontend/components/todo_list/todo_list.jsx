@@ -1,27 +1,17 @@
 import React from 'react';
 import TodoListItem from './todo_list_item';
+import TodoForm from  './todo_form'
 
-export const TodoList = ({ todos }) => {
-  debugger
-  const allTodos = todos.map((todo) => {
-    return (<TodoListItem todo = {todo} />);
+export const TodoList = ({ todos, receiveTodo }) => {
+  const allTodos = todos.map((todo, idx) => {
+    return (<TodoListItem  key={idx} todo = {todo} />);
   });
   return (
-    <ul>
-      {allTodos}
-    </ul>
+    <div>
+      <TodoForm receiveTodo={receiveTodo}/>
+      <ul>
+        {allTodos}
+      </ul>
+    </div>
   )
 };
-
-
-// export const TodoList = ({ todos }) => {
-//   // debugger
-//   const allTodos = todos.map((todo) => {
-//     return (<li> {todo.title} </li>);
-//   });
-//   return (
-//     <ul>
-//       {allTodos}
-//     </ul>
-//   )
-// };
