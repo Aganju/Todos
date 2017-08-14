@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { configureStore } from './store/store.js';
+import { Root } from './components/root.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
-  ReactDom.render(<h1>Todos App</h1>, root);
+  const content = document.getElementById('content');
   const store = configureStore();
+  ReactDom.render(<Root store={store}/>, content);
   window.store = store;
 });
