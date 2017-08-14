@@ -23,17 +23,21 @@ class TodoForm extends React.Component{
   render(){
     return (
       <div>
-        <h2>Make New Todo</h2>
         <form onSubmit={this.addTodo}>
-          <input type='text'
-                 onChange={this.handleChange('title')}
-                 value={this.state.title}>
-          </input>
-          <textarea
-            onChange={this.handleChange('body')}
-            value={this.state.body}>
-          </textarea>
-          <input type="submit" value='Create New Todo' />
+          <label> Title
+            <input type='text'
+                   onChange={this.handleChange('title')}
+                   value={this.state.title}>
+            </input>
+          </label>
+          <br/>
+          <label> Body
+            <textarea
+              onChange={this.handleChange('body')}
+              value={this.state.body}>
+            </textarea><br/>
+            <input type="submit" value='Create New Todo' />
+          </label>
         </form>
       </div>
     );
