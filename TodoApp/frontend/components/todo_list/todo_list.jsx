@@ -1,22 +1,39 @@
 import React from 'react';
 import TodoListItem from './todo_list_item';
-import TodoForm from  './todo_form'
+import TodoForm from  './todo_form';
 
-export const TodoList = ({ todos, receiveTodo, removeTodo }) => {
-  const allTodos = todos.map((todo, idx) => {
-    return (<TodoListItem
-            key = { idx }
-            todo = { todo }
-            receiveTodo = { receiveTodo }
-            removeTodo = { removeTodo }
-            />);
-  });
-  return (
-    <div>
-      <ul>
-        {allTodos}
-      </ul>
-      <TodoForm receiveTodo={receiveTodo}/>
-    </div>
-  )
-};
+class TodoList extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount(){
+    this.props.fetchTodos();
+  }
+
+  render(){
+    const allTodos = this.props.todos.map((todo, idx) => {
+      return (<TodoListItem
+              key = { idx }
+              todo = { todo }
+              deleteTodo = { this.props.deleteTodo }
+              updateTodo = { this.props.updateTodo }
+              />);
+    });
+    return (
+      <div>
+        <ul>
+          {allTodos}
+        </ul>
+        <TodoForm
+          createTodo = { this.props.createTodo }
+          errors = { this.props.errors }
+          clearErrors = { this.props.clearErrors }
+          />
+      </div>
+    );
+  }
+
+}
+
+export default TodoList;

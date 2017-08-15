@@ -8,12 +8,12 @@ class TodoListItem extends React.Component{
   }
 
   remove(){
-    this.props.removeTodo(this.props.todo);
+    this.props.deleteTodo(this.props.todo);
   }
 
   flipStatus(){
     // debugger
-    this.props.receiveTodo(
+    this.props.updateTodo(
       Object.assign({},
       this.props.todo,
       {done: !this.props.todo.done }

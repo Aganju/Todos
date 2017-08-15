@@ -16,21 +16,22 @@ class TodoForm extends React.Component{
   addTodo(e){
     e.preventDefault();
     const todo = Object.assign({}, this.state, {done: false, id: new Date().getTime()});
-    this.props.receiveTodo(todo);
-    this.setState({title: '', body: ''});
+    this.props.createTodo(todo)
+      .then(() => this.setState({title: '', body: ''}))
+      .then(() => this.props.clearErrors());
   }
 
   render(){
     return (
       <div>
-        <form onSubmit={this.addTodo}>
+        <form onSubmit={ this.addTodo }>
           <label> Title
             <input type='text'
                    onChange={this.handleChange('title')}
                    value={this.state.title}>
             </input>
           </label>
-          <br/>
+          <p> { this.props.errors } </p>
           <label> Body
             <textarea
               onChange={this.handleChange('body')}
