@@ -15,7 +15,7 @@ class TodoForm extends React.Component{
 
   addTodo(e){
     e.preventDefault();
-    const todo = Object.assign({}, this.state, {done: false, id: new Date().getTime()});
+    const todo = Object.assign({}, this.state, {done: false});
     this.props.createTodo(todo)
       .then(() => this.setState({title: '', body: ''}))
       .then(() => this.props.clearErrors());

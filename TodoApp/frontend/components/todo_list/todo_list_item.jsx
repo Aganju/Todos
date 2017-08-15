@@ -23,11 +23,13 @@ class TodoListItem extends React.Component{
   render(){
     const doneStatus = this.props.todo.done ? 'Undo' : 'Done';
     return (
-      <li>
+      <li className='todo'>
         {this.props.todo.title}
-        <button type="button" onClick={this.remove}>Delete</button>
-        <button type="button" onClick={this.flipStatus}>{doneStatus}</button>
-      </li>
+        <div className = "buttons">
+          <button type="button" className='btn done_btn' onClick={this.flipStatus}>{doneStatus}</button>
+          <button type="button"  className='btn delete_btn' onClick={this.remove}>Delete</button>
+        </div>
+    </li>
 
     );
   }
